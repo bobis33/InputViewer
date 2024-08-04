@@ -13,11 +13,11 @@ function clean() {
     else
         echo ".doxygen directory does not exist."
     fi
-    if [ -f "InputViewer" ]; then
-        rm InputViewer
-        echo "InputViewer binary has been removed."
+    if [ -f "inputviewer" ]; then
+        rm inputviewer
+        echo "inputviewer binary has been removed."
     else
-        echo "InputViewer binary does not exist."
+        echo "inputviewer binary does not exist."
     fi
 }
 

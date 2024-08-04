@@ -6,7 +6,7 @@ on:
       - "**"
 
 env:
-  EXECUTABLE: "gw2-Bobsxtesnion"
+  EXECUTABLE: "inputviewer"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update -y
-          sudo apt install -y libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev libglm-dev libglfw3-dev glslang-tools
+          sudo apt install -y libevdev-dev
 
       - name: Check compilation
         run: ./build.sh build

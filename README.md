@@ -14,6 +14,7 @@ This project is a simple tool to display the input of a controller on the screen
 
 - [CMake 3.27](https://cmake.org/)
 - [C++20](https://en.cppreference.com/w/cpp/20)
+- [libevdev](https://www.freedesktop.org/wiki/Software/libevdev/)
 
 
 # Usage

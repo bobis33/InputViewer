@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 
-project(InputViewer
+project(inputviewer
         DESCRIPTION "Viewer for input devices"
         LANGUAGES CXX
         VERSION 0.1.0
@@ -19,6 +19,8 @@ if (USE_CLANG_TIDY)
     include(${CMAKE_MODULE_PATH}/ClangTidy.cmake)
 endif()
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(LIBEVDEV REQUIRED libevdev)
 
 add_subdirectory(lib)
 
@@ -32,6 +34,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
         my_lib
+        ${LIBEVDEV_LIBRARIES}
 )
 
 
