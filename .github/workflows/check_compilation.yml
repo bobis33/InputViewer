@@ -1,0 +1,36 @@
+name: Check compilation
+run-name: ${{github.actor}} ${{github.branch}} | Check compilation
+on:
+  push:
+    branches:
+      - "**"
+
+env:
+  EXECUTABLE: "gw2-Bobsxtesnion"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Initialize submodules
+        run: git submodule update --init --recursive
+
+      - name: Install dependencies
+        run: |
+          sudo apt update -y
+          sudo apt install -y libxkbcommon-dev libxinerama-dev libxcursor-dev libxi-dev libglm-dev libglfw3-dev glslang-tools
+
+      - name: Check compilation
+        run: ./build.sh build
+
+      - name: Check binary
+        run: |
+          if [[ ! -x "./${EXECUTABLE}" ]]; then
+            echo "Error: Binary ${EXECUTABLE} not found."
+            exit 1
+          fi
